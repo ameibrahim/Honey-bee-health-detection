@@ -6,9 +6,6 @@ from keras.models import load_model
 import numpy as np
 import sys
 
-
-
-
 img_folder='./Dataset/bee_imgs/'
 img_width=128
 img_height=128
@@ -40,9 +37,10 @@ image_data = np.array(image_data,ndmin=4)
 
 # print(image_data)
 
-prediction = model.predict_classes(image_data)
+prediction = model.predict(image_data)
+classes_x=np.argmax(prediction,axis=1)
 
-print(prediction)
+print(classes_x)
 sys.stdout.flush()
 
 
