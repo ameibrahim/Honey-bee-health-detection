@@ -18,9 +18,29 @@ def preprocess_image(image):
 # class_labels = ['cancer', 'chickenpox', "cowpox", "healthy", "measles", "monkeypox"]
 
 # Streamlit interface
-st.title("Skin Condition Predictor")
-st.write("This application predicts if you have diseases such as chickenpox, measles, cowpox or monkeypox.")
-st.write("Upload an image to classify if you are sick.")
+st.title(f":orange[Bee Health Detection]")
+st.write("This application predicts the health status of honey bees.")
+
+col1, col2, col3 = st.columns(3)
+
+col1.image("images/bee1.jpg")
+col2.image("images/bee2.jpg")
+col3.image("images/bee3.jpeg")
+
+st.write("Here are the following classifcations available")
+
+code = '''
+    0. --> varoa, small hive beetles
+    1. --> ant problems
+    2. --> varoa hive beetles
+    3. --> healthy
+    4. --> hive being robbed
+    5. --> missing queen
+'''
+st.code(code, language="markdown")
+
+
+st.write("To predict, you need to upload an image of a bee to test the following conditions.")
 
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
@@ -46,4 +66,4 @@ if uploaded_file is not None:
     classes = [ "varoa, small hive beetles", "ant problems", "varoa hive beetles", "healthy", "hive being robbed", "missing queen"]  
 
     st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
-    st.title(f"Prediction: {classes[classes_x[0]]}")
+    st.title(f"Prediction: :orange[{classes[classes_x[0]]}]")
